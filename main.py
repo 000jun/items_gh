@@ -5,7 +5,7 @@ from streamlit_dynamic_filters import DynamicFilters
 st.header("물품조사 페이지", divider='rainbow')
 
 # 데이터프레임 처리
-df = pd.read_excel('items_test.xlsx')
+df = pd.read_excel('items_test_happy.xlsx') # 파일명 확인 : 행복센터, 무계센터 -> happy
 
 
 # 이미지 url 처리
@@ -27,10 +27,8 @@ merged_df = pd.merge(df, pre_url_df, on='물품목록번호', how='left')
 merged_df.rename(columns={'이미지주소_x': '이미지주소'}, inplace=True)
 
 # 데이터프레임 후처리 (컬럼 인덱싱)
-merged_df = merged_df[['순','운용부서', '이미지주소', '물품목록번호', '물품분류명', '품명규격', '등록수량', '검수수량']]
+merged_df = merged_df[['순','운용부서', '이미지주소', '물품목록번호', '물품분류명', '품명규격', '등록수량', '검수수량', '비고']]
 merged_df.sort_values(by='운용부서', inplace=True)
-merged_df['비고'] = ''
-
 
 # 처리 후 데이터프레임
 with st.expander('검수용 데이터프레임', expanded=True):
