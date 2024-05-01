@@ -28,6 +28,7 @@ merged_df.rename(columns={'이미지주소_x': '이미지주소'}, inplace=True)
 
 # 데이터프레임 후처리 (컬럼 인덱싱)
 merged_df = merged_df[['순','운용부서', '이미지주소', '물품목록번호', '물품분류명', '품명규격', '등록수량', '검수수량', '비고']]
+merged_df['비고'] = merged_df['비고'].astype(str)
 merged_df.sort_values(by='운용부서', inplace=True)
 
 # 처리 후 데이터프레임
